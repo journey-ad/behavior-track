@@ -27,14 +27,11 @@ export declare class FormDetector {
     private scanFields;
     private on;
     private detachAll;
-    private handleFieldFocus;
     private handleFieldClick;
     private handleFieldInput;
     private handleFieldKeydown;
-    private handleFieldKeyup;
     private handleGlobalKeydown;
     private handleGlobalKeyup;
-    private handleMouseMove;
     private handleGlobalMouseMove;
     private handleAction;
     private handleEnterSubmit;

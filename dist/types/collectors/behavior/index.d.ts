@@ -12,6 +12,7 @@ export declare class BehaviorManager {
     private scroll;
     private touch;
     private _config;
+    private _sampled;
     constructor(config: ResolvedConfig);
     start(): void;
     stop(): void;

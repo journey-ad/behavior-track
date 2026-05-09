@@ -1,2 +1,2 @@
-export declare function generateId(): string;
+export declare function generateUUID(): string;
 export declare function generateSessionId(): string;
