@@ -10,7 +10,6 @@ export declare const ScbCodes: {
 };
 /** superHumanSpeed 子信号 */
 export declare const ShsCodes: {
-    readonly FILL_TOO_FAST: "fill_too_fast";
     readonly BATCH_ASSIGN: "batch_assign";
     readonly TYPING_TOO_FAST: "typing_too_fast";
     readonly UNIFORM_INTERVALS: "uniform_intervals";
