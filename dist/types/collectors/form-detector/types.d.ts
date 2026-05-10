@@ -23,11 +23,34 @@ export declare const CdpCodes: {
     readonly COORD_INCONSISTENT: "coord_inconsistent";
     readonly OFFSET_ANOMALY: "offset_anomaly";
 };
-export type IssueCode = (typeof ScbCodes)[keyof typeof ScbCodes] | (typeof ShsCodes)[keyof typeof ShsCodes] | (typeof CdpCodes)[keyof typeof CdpCodes];
+/** 环境风险子信号 */
+export declare const EnvCodes: {
+    readonly ENV_CDP_DETECTED: "env_cdp_detected";
+    readonly ENV_DEVTOOLS_OPEN: "env_devtools_open";
+    readonly ENV_WEBDRIVER: "env_webdriver";
+    readonly ENV_HEADLESS: "env_headless";
+    readonly ENV_WORKER_CDP: "env_worker_cdp";
+    readonly ENV_TAMPERED: "env_tampered";
+    readonly ENV_UA_INCONSISTENT: "env_ua_inconsistent";
+};
+export type IssueCode = (typeof ScbCodes)[keyof typeof ScbCodes] | (typeof ShsCodes)[keyof typeof ShsCodes] | (typeof CdpCodes)[keyof typeof CdpCodes] | (typeof EnvCodes)[keyof typeof EnvCodes];
+/** 传递给表单检测器的环境风险快照 */
+export interface EnvRiskSnapshot {
+    risk_score: number;
+    signals: string[];
+    is_cdp: boolean;
+    is_devtools_open: boolean;
+    is_webdriver: boolean;
+    is_headless: boolean;
+    worker_cdp: boolean;
+    is_tampered: boolean;
+    ua_consistent: boolean;
+}
 export interface FormDetectConfig {
     containerSelector: string;
     actionSelector: string;
     onResult: (result: FormDetectionResult) => void;
+    envRisk?: EnvRiskSnapshot;
 }
 export interface FormDetectionResult {
     is_pass: boolean;
@@ -47,6 +70,7 @@ export interface FieldState {
     hadClick: boolean;
     hadInput: boolean;
     hadKeydown: boolean;
+    hadPaste: boolean;
     inputTrusted: boolean;
     firstInputTime: number;
     lastInputTime: number;

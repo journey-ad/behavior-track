@@ -6,5 +6,6 @@ export declare class Lifecycle {
     pause(): void;
     resume(): void;
     destroy(): void;
+    reset(): void;
     isActive(): boolean;
 }

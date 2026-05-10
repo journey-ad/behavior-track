@@ -1,4 +1,8 @@
-import type { ScrollEvent } from '../../types/reports';
+import type { ScrollSummary, RawScrollEvent } from '../../types/reports';
+export interface ScrollDrainResult {
+    summary: ScrollSummary;
+    rawEvents?: RawScrollEvent[];
+}
 export declare class ScrollTracker {
     private events;
     private lastTop;
@@ -6,5 +10,6 @@ export declare class ScrollTracker {
     private handler;
     start(): void;
     stop(): void;
-    drain(): ScrollEvent[];
+    drain(includeRaw?: boolean): ScrollDrainResult;
+    private computeSummary;
 }

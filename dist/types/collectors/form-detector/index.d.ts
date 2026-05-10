@@ -1,4 +1,5 @@
 import type { FormDetectConfig } from './types';
+import type { EnvRiskSnapshot } from './types';
 export declare class FormDetector {
     private config;
     private container;
@@ -8,12 +9,17 @@ export declare class FormDetector {
     private clickRecords;
     private keyRecords;
     private lastMouseMove;
+    private composing;
     private firstInputTime;
     private lastInputTime;
     private lastResult;
+    private analyzeScheduled;
     private boundHandlers;
     private containerObserver;
+    private unsubscribeDoc;
+    private envRisk;
     constructor(config: FormDetectConfig);
+    setEnvRisk(snapshot: EnvRiskSnapshot): void;
     getSignals(): {
         is_suspicious_form: boolean;
         is_form_super_human: boolean;
@@ -30,11 +36,15 @@ export declare class FormDetector {
     private handleFieldClick;
     private handleFieldInput;
     private handleFieldKeydown;
+    private handleCompositionStart;
+    private handleCompositionEnd;
+    private handleFieldPaste;
     private handleGlobalKeydown;
     private handleGlobalKeyup;
     private handleGlobalMouseMove;
     private handleAction;
     private handleEnterSubmit;
+    private scheduleAnalyze;
     private analyze;
     private _scbCodes;
     private analyzeSuspiciousBehavior;
@@ -44,4 +54,5 @@ export declare class FormDetector {
     private analyzeCDPMouseLeak;
     private buildTypingCadence;
     private collectIssues;
+    private collectEnvIssues;
 }

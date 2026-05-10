@@ -1,11 +1,5 @@
 import type { ResolvedConfig } from '../../types/config';
-import type { MouseTrack, KeyboardEvent, ScrollEvent, TouchEvent } from '../../types/reports';
-export interface BehaviorStream {
-    mouse_tracks: MouseTrack[];
-    keyboard_stream: KeyboardEvent[];
-    scroll_events: ScrollEvent[];
-    touch_events: TouchEvent[];
-}
+import type { BehaviorStream } from '../../types/reports';
 export declare class BehaviorManager {
     private mouse;
     private keyboard;
@@ -16,6 +10,8 @@ export declare class BehaviorManager {
     constructor(config: ResolvedConfig);
     start(): void;
     stop(): void;
-    drain(): BehaviorStream;
+    drain(options?: {
+        includeRaw: boolean;
+    }): BehaviorStream;
     private shouldSample;
 }

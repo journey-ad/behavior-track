@@ -6,6 +6,12 @@ declare const BehaviorTrack: {
     detect: (config: FormDetectConfig) => void;
     pause: () => void;
     resume: () => void;
+    resetSession: () => string;
+    getDiagnostics: () => {
+        error_counts: Record<string, number>;
+        session_id: string;
+        sequence_no: number;
+    };
     destroy: () => void;
 };
 export { BehaviorTrack };
